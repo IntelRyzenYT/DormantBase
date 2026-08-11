@@ -5,19 +5,27 @@ import PackageDescription
 
 let package = Package(
     name: "DormantBase",
+    platforms: [
+        .iOS(.v17),
+        .macOS(.v14)
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "DormantBase",
             targets: ["DormantBase"]
-        ),
+        )
+    ],
+    dependencies: [
+        .package(url: "https://github.com/evgenyneu/keychain-swift", .upToNextMajor(from: "24.0.0")),
+        .package(url: "https://github.com/auth0/JWTDecode.swift", .upToNextMajor(from: "4.0.0")),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "DormantBase"
-        ),
-
+            name: "DormantBase",
+            dependencies: [
+                .product(name: "KeychainSwift", package: "keychain-swift"),
+                .product(name: "JWTDecode", package: "JWTDecode.swift")
+            ]
+        )
     ]
 )

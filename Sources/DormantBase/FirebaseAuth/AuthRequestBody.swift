@@ -6,13 +6,13 @@
 //
 
 
-fileprivate struct AuthRequestBody: Codable {
+internal struct AuthRequestBody: Codable {
     var email: String
     var password: String
     var returnSecureToken: Bool = true
 }
 
-fileprivate struct AuthResponseBody: Codable {
+internal struct AuthResponseBody: Codable {
     var idToken: String
     var email: String
     var refreshToken: String
@@ -21,7 +21,7 @@ fileprivate struct AuthResponseBody: Codable {
     var registered: Bool
 }
 
-fileprivate struct RefreshTokenResponse: Codable {
+internal struct RefreshTokenResponse: Codable {
     var access_token: String
     var expires_in: String
     var token_type: String
